@@ -82,6 +82,11 @@ List groups with query
 az group list --output table --query "[?name == '$RESOURCE_GROUP']"
 ```
 
+Find command examples
+```shell
+az find "az vm"
+```
+
 ## App Service
 ```shell
 export RESOURCE_GROUP=web-site
