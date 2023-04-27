@@ -116,3 +116,18 @@ Fix DNS issue (https://github.com/microsoft/WSL/issues/8022) run below script
 ```shell
 sudo bash -c "sed -i '/management.azure.com/d' /etc/hosts" ; sudo bash -c 'echo "$(dig management.azure.com | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}$") management.azure.com" >> /etc/hosts'
 ```
+
+# ARM
+Use Visual Studio Code together with extension https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools
+## Storage
+### az cli
+```shell
+az deployment group create --name storageaccount2 --resource-group arm-templates --template-file arm/storage.json
+```
+
+### PowerShell
+```shell
+$today=Get-Date -Format "yyyyMMdd"
+$deploymentName="powershellTemplate-"+"$today"
+New-AzResourceGroupDeployment -Name $deploymentName -ResourceGroupName arm-templates  -TemplateFile .\arm\storage.json
+```
